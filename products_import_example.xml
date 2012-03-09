@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+	<products>
+		<Games>
+			<product>
+				<title>Starcraft 2</title>
+				<description>Strategy Based Game. Best RTS Ever.</description>
+				<category>26</category>
+				<stock>124</stock>
+				<price>59,99</price>
+			</product>
+		</Games>
+		<Software>
+			<product>
+				<title>Microsoft Office 2011</title>
+				<description>Productivity software for professionals and students.</description>
+				<category>22</category>
+				<stock>0</stock>
+				<price>129</price>
+			</product>
+		</Software>
+	</products>

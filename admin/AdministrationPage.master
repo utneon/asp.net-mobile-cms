@@ -1,0 +1,78 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdministrationPage.master.cs"
+    Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head id="Head1" runat="server">
+    <title></title>
+    <link href="../css/reset.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <header class="page_title">
+		<h1>Store Administration</h1>
+	</header>
+        <nav>
+		<ul>
+        	<li><asp:HyperLink ID="primarylink1" NavigateUrl='~/Default.aspx' runat="server" Text="Home"></asp:HyperLink></li>
+			<li><asp:HyperLink ID="primarylink2" NavigateUrl='~/mobile/Default.aspx' runat="server" Text="Mobile" Target="_blank"></asp:HyperLink></li>
+			<li><asp:HyperLink ID="primarylink3" NavigateUrl='~/Support.aspx' runat="server" Text="Support"></asp:HyperLink></li>
+			<li><asp:HyperLink ID="primarylink4" NavigateUrl='~/About.aspx' runat="server" Text="About Us"></asp:HyperLink></li>
+		</ul>
+	</nav>
+        <section id="banner">
+		<header>
+			<h2>Área de Erros de mensagens.</h2>
+		</header>
+            
+	</section>
+        <div id="content">
+            <aside id="left">
+			<section>
+				<header>
+					<h3>Gestão do Site</h3>
+				</header>
+				<ul>
+                    <li><a href="Content.aspx">Conteúdo</a></li>
+					<li><a href="Categories.aspx">Manage Categories</a></li>
+					<li><a href="Products.aspx">Manage Products</a></li>
+                    <li><a href="ImportXml.aspx">Import Products</a></li>
+				</ul>
+			</section>
+			<section>
+				<header>
+					<h3>Store</h3>
+				</header>
+				<ul>
+                <li><a href="Orders.aspx">View Orders</a></li>
+                <li><a href="Support.aspx">Support Requests</a></li>
+				</ul>
+			</section>
+		</aside>
+            <div id="main_content">
+                <div id="main-managment">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+            <aside id="right">
+			<section>
+				<header>
+					<h3>Login</h3>
+				</header>
+                <div style="padding-top:5px;"><p>Welcome, <asp:LoginName ID="LoginName1" runat="server"></asp:LoginName>.</p>
+                <asp:LoginStatus ID="LoginStatus1" runat="server"></asp:LoginStatus>
+                </div>
+			</section>
+		</aside>
+        </div>
+        <footer>
+            <p>Copyrights &#174; Paulo Carvalho</p>
+        </footer>
+    </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+LATEST UPDATES:
+
+NEW CHANGES IN v 1.6-DEV
+
+1. Optimized some html and css in Masterpages.
+2. Added validators to all insert forms and edit forms.
+	2.1 Added Regular Expression validator to e-mail field.
+3. Users in administrator roles are now redirected to administration page when clicking on Home Link.
+4. Updated Profile Information for users.
+5. Changed the id_category not displaying the dropdown list in edit product view.
+
+6. Created new table (support) in database to handle support tickets for authenticated users.
+	6.1 Users can send tickets.
+	6.2 Users can consult ticket replies from the store.
+
+7. Added Support functionality in support.aspx and administration.
+	7.1 View Ticket Requests and reply to them.
+
+8. Added Reports in ~/admin/Default.aspx
+	8.1 Open Tickets Reports.
+	8.2 New Orders Reports.
+
+9. Added Shopping Cart Functionality
+	9.1 Added ProductAdd.aspx to handle the shopping cart functions of adding new products.
+	9.2 Added Product Class and Shopping Cart Classes.
+	9.3 Added A Web User Control for the Shopping Cart Output.
+	9.4 Clear Session Variables when user logs off.
+	9.5 Add or remove items from the shopping Cart by ShoppingCart Class Public Methods.
+	9.6 Complete Purchase.
+
+10. Import Products from XML
+	10.1 Import products from XML Document. (Aqui não criei uma verificação se os produtos que estão a tentar ser inseridos já existem com o mesmo título ou não, pelo qual, se tentar importar novamente, vai dizer import successfully mas não duplica.
+	10.2 Example file loaded by default in the administration page. ("http://www.utneon.com/utneon/products.xml");
+	10.3 Regular URL expression validation for document load.
+
+11. Created a content managment system supporting Images and Content Types.
+	11.1 Updated Mobile interface to list News for these contenet types.
+	11.2 Create, Edit and View Content.

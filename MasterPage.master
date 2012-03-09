@@ -1,0 +1,124 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+<%@ Register src="WebCart.ascx" tagname="WebCart" tagprefix="uc1" %>
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <title></title>
+    <link href="css/reset.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <header class="page_title">
+		<h1>DAW - Loja Online</h1>
+	</header>
+        <nav>
+		<ul>
+        	<li><asp:HyperLink ID="primarylink1" NavigateUrl='~/Default.aspx' runat="server" Text="Home"></asp:HyperLink></li>
+			<li><asp:HyperLink ID="primarylink2" NavigateUrl='~/mobile/Default.aspx' runat="server" Text="Mobile" Target="_blank"></asp:HyperLink></li>
+			<li><asp:HyperLink ID="primarylink3" NavigateUrl='~/Support.aspx' runat="server" Text="Support"></asp:HyperLink></li>
+			<li><asp:HyperLink ID="primarylink4" NavigateUrl='~/About.aspx' runat="server" Text="About Us"></asp:HyperLink></li>
+		</ul>
+	</nav>
+        <section id="banner">
+		<header>
+			<h2>Destaques/Promoções</h2>
+		</header>
+            
+	</section>
+        <div id="content">
+            <aside id="left">
+			<section>
+				<header>
+					<h3>Categories</h3>
+				</header>
+				<ul>
+                <asp:DataList ID="DataList1" RepeatLayout="Flow" runat="server" DataKeyField="idcategoria" 
+                        DataSourceID="SqlDataSource1">
+                    <ItemTemplate>
+                        <li><asp:HyperLink ID="hyperlinkcategories" NavigateUrl='<%# String.Format("~/store.aspx?view=products&category={0}", Eval("idcategoria")) %>' Text='<%# Eval("nome") %>' runat="server"></asp:HyperLink></li>
+                    </ItemTemplate>
+                    </asp:DataList>
+                <asp:SqlDataSource ID="SqlDataSource1" 
+                            runat="server" ConnectionString="<%$ ConnectionStrings:connectionloja %>" 
+                            DeleteCommand="DELETE FROM [categorias] WHERE [idcategoria] = @idcategoria" 
+                            InsertCommand="INSERT INTO [categorias] ([nome]) VALUES (@nome)" 
+                            ProviderName="<%$ ConnectionStrings:connectionloja.ProviderName %>" 
+                            SelectCommand="SELECT [idcategoria], [nome] FROM [categorias] ORDER BY [nome]" 
+                            
+                        UpdateCommand="UPDATE [categorias] SET [nome] = @nome WHERE [idcategoria] = @idcategoria">
+                        <DeleteParameters>
+                            <asp:Parameter Name="idcategoria" Type="Int32" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="nome" Type="String" />
+                        </InsertParameters>
+                        <UpdateParameters>
+                            <asp:Parameter Name="nome" Type="String" />
+                            <asp:Parameter Name="idcategoria" Type="Int32" />
+                        </UpdateParameters>
+                        </asp:SqlDataSource>
+				</ul>
+			</section>
+		</aside>
+            <div id="main_content">
+                <div id="main-managment">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+            <aside id="right">
+			<section>
+				<header>
+					<h3>Login</h3>
+				</header>
+                <div style="padding-top:5px;">
+                    <asp:LoginView ID="LoginView1" runat="server">
+                    <AnonymousTemplate>
+                        <asp:Login ID="Login1" runat="server" BackColor="#E3EAEB" BorderColor="#E6E2D8" 
+                            BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" 
+                            Font-Size="0.8em" ForeColor="#333333" TextLayout="TextOnTop">
+                            <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
+                            <LoginButtonStyle BackColor="White" BorderColor="#C5BBAF" BorderStyle="Solid" 
+                                BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#1C5E55" />
+                            <TextBoxStyle Font-Size="0.8em" />
+                            <TitleTextStyle BackColor="#1C5E55" Font-Bold="True" Font-Size="0.9em" 
+                                ForeColor="White" />
+                        </asp:Login>
+                        <asp:HyperLink runat="server" ID="registerLink" NavigateUrl="~/Register.aspx" Text="Register in Our Store"></asp:HyperLink>
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        <p>Welcome, <asp:LoginName ID="LoginName1" runat="server"></asp:LoginName>.</p>
+                        <br>
+                        <asp:HyperLink ID="editInfoLink" runat="server" Text="Edit Personal Info" NavigateUrl="~/UserInfo.aspx"></asp:HyperLink>
+                        <br />
+                        <br />
+                        <asp:HyperLink ID="changePasswordLink" runat="server" Text="Change Password" NavigateUrl="~/ChangePassword.aspx"></asp:HyperLink>
+                        <br />
+                        <br />
+                        <asp:LoginStatus ID="LoginStatus1" runat="server" 
+                            LogoutAction="RedirectToLoginPage"></asp:LoginStatus>
+                    </LoggedInTemplate>
+                    </asp:LoginView>
+                </div>
+			</section>
+            <br />
+            <section>
+				<header>
+					<h3>Shopping Cart</h3>
+				</header>
+                <div style="padding-top:5px;">
+                    <uc1:WebCart ID="WebCart1" runat="server" />
+                </div>
+            </section>
+		</aside>
+        </div>
+        <footer>
+            <p>Copyrights &#174; Paulo Carvalho</p>
+        </footer>
+    </div>
+    </form>
+</body>
+</html>
